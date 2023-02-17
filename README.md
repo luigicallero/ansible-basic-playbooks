@@ -28,3 +28,7 @@ Example:
 ```yaml
 ansible-playbook playbook-ping.yaml -i ./inventory.txt
 ```
+
+### Interesting Notes:
+* playbook file can have extension .yml or .yaml, is the same.
+* Ansible will only make a change if it is required (if same file is already there it will not copy it again).
