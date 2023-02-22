@@ -31,4 +31,6 @@ ansible-playbook playbook-ping.yaml -i ./inventory.txt
 
 ### Interesting Notes:
 * playbook file can have extension .yml or .yaml, is the same.
-* Ansible will only make a change if it is required (if same file is already there it will not copy it again).
+* Majority of Ansible modultes are idempotent: will only make a change if it is required (if same file is already there it will not copy it again).
+* Idempotency: an operation is idempotent if the result of performing it once is exactly the same as the result of performing it repeteadly without any intervening actions.
+* Jinja2 templating exercises come from Kodecloud mini course [Jinja2 Basics](https://kodekloud.com/courses/jinja2-templating/)

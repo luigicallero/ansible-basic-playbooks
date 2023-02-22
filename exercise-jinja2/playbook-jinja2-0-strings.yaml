@@ -1,0 +1,29 @@
+-
+  name: Use Jinja to different case scenarios
+  hosts: localhost
+  vars:
+    my_name: Bond
+  tasks:
+    - name: String manipulation - Substitute
+      debug:
+        msg: 'The name is {{ my_name }}'
+
+    - name: String manipulation - Upper
+      debug:
+        msg: 'The name is {{ my_name | upper }}'
+
+    - name: String manipulation - Lower
+      debug:
+        msg: 'The name is {{ my_name | lower }}'
+
+    - name: String manipulation - Title
+      debug:
+        msg: 'The name is {{ my_name | title }}'
+
+    - name: String manipulation - Replace
+      debug:
+        msg: 'The name is {{ my_name | replace ("Bond","Bourne") }}'
+
+    - name: String manipulation - Replace
+      debug:
+        msg: 'The name is {{ my_first_name | default("James") }} {{ my_name }}'

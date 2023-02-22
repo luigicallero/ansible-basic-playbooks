@@ -1,0 +1,43 @@
+-
+  name: Use Jinja to different case scenarios
+  hosts: localhost
+  vars:
+    list: [1,2,3,4,5,1,2]
+    word_list: ["The","name","is","Bond"]
+    words: "Everyone was busy, so I went to the movie alone. I was very proud of my nickname throughout high school but today- I couldn’t be any different to what my nickname was. Wow, does that work? She works two jobs to make ends meet; at least, that was her reason for not having time to join us."
+  tasks:
+    - name: List and set - Min
+      debug:
+        msg: '{{ list | min }}'
+
+    - name: List and set - Max
+      debug:
+        msg: '{{ list | max }}'
+
+    - name: List and set - Last
+      debug:
+        msg: '{{ list | last }}'
+
+    - name: List and set - Unique
+      debug:
+        msg: '{{ [1,2,3,2] | unique }}'
+
+    - name: List and set - Union
+      debug:
+        msg: '{{ list | union([9,10]) }}'
+
+    - name: List and set - Intersect or Coincident
+      debug:
+        msg: '{{ list | intersect([5,10]) }}'
+
+    - name: List and set - Random (between 1 and 100)
+      debug:
+        msg: '{{ 100 | random }}'
+
+    - name: List and set - Join
+      debug:
+        msg: '{{ word_list | join(" ") }}'
+
+    - name: List and set - Count words
+      debug:
+        msg: '{{ words | wordcount }}'

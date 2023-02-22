@@ -1,0 +1,21 @@
+-
+  name: Use Jinja to different case scenarios
+  hosts: localhost
+  vars:
+    number: 0
+  tasks:
+    - name: Loops
+      debug:
+        msg: '
+          {% for number in [0,1,2,3,4] %}
+            {{ number }}
+          {% endfor%}'
+
+    - name: Loops & Conditions
+      debug:
+        msg: '
+          {% for number in [0,1,2,3,4] %}
+            {% if number == 2 %}
+              {{ number }} 
+            {% endif %}
+          {% endfor%}'
