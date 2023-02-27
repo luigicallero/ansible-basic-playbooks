@@ -1,5 +1,5 @@
 # Ansible Basic Playbooks
-Learning from Oreilly course ["Ansible for the Absolute Beginner - Hands-On – DevOps"](https://www.udemy.com/course/learn-ansible/) by the great Mumshad Mannambeth
+Learning from Udemy course ["Ansible for the Absolute Beginner - Hands-On – DevOps"](https://www.udemy.com/course/learn-ansible/) by the great Mumshad Mannambeth
 
 ## First Create the Lab:
 
