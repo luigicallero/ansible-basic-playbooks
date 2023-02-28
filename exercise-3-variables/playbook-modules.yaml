@@ -1,0 +1,23 @@
+---
+- name: 'Playing with variables'
+  hosts: localhost
+  become: yes
+  vars:
+    car_model: 'BMW M3'
+    country_name: USA
+    title: 'Systems Engineer'
+  tasks:
+    - name: 'Add nameserver in resolv.conf file'
+      lineinfile:
+        path: /etc/resolv.conf
+        line: 'nameserver {{ nameserver_ip }}' # variable in inventory
+    
+    - name: 'Disable SNMP Port'
+      firewalld:
+        port: '{{ snmp_port }}' # variable in inventory
+        permanent: true
+        state: disabled
+
+    - command: 'echo "My car is {{ car_model }}"' # variables in the play
+    - command: 'echo "I live in the {{ country_name }}"'
+    - command: 'echo "I work as a {{ title }}"'
