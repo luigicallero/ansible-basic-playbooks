@@ -1,0 +1,8 @@
+# Inventory File
+localhost ansible_connection=local nameserver_ip=8.8.8.8 snmp_port='160-161/udp' ansible_sudo_pass=osboxes.org
+target1 ansible_host=target1 ansible_ssh_pass=osboxes.org ansible_sudo_pass=osboxes.org
+target2 ansible_host=target2 ansible_ssh_pass=osboxes.org ansible_sudo_pass=osboxes.org
+
+[web_nodes]
+target1
+target2

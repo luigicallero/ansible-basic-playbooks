@@ -1,0 +1,46 @@
+---
+- name: Install package
+  hosts: web_nodes
+  vars:
+    age: 25
+    packages:
+      - name: vim
+        required: true
+      - name: net-tools
+        required: true
+      - name: yum-utils
+        required: true
+      - name: apache
+        required: false
+  tasks:
+    - name: Install vim on NOT RedHat servers
+      package:
+        name: vim
+        state: present
+      when: 'ansible_os_family != "RedHat"'
+
+    - name: Check firewall only on target2 host
+      service: 'name=firewalld state=started'
+      when: 'ansible_host == "target2"'
+
+    - name: I am a Child
+      command: 'echo "I am a Child"'
+      when: 'age < 18'
+      
+    - name: I am an Adult
+      command: 'echo "I am an Adult"'
+      when: 'age >= 18'
+
+    - name: Intalling using loops
+      apt:
+        name: "{{ item.name}}"
+        state: present
+      when: item.required == true and ansible_os_family == "Debian"
+      loop: "{{ packages }}"
+    
+    - name: Intalling using loops
+      yum:
+        name: "{{ item.name}}"
+        state: present
+      when: item.required == true and (ansible_os_family == "RedHat" or ansible_os_family == "Suse")
+      loop: "{{ packages }}"
