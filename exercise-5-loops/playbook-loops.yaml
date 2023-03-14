@@ -1,0 +1,27 @@
+---
+- name: Create Users
+  hosts: localhost
+  become: yes
+  vars:
+    packages:
+      - httpd
+      - make
+      - vim
+  tasks:
+    - name: Create users
+      user: name='{{ item.name }}' state=present uid='{{ item.uid}}'
+      loop:
+      - name: luisca
+        uid: 0101
+      - name: pedror
+        uid: 6732
+      - name: lenninb
+        uid: 2938
+
+# "with_items" is the old version of "loop"
+
+    - name: 'Install required packages'
+      yum:
+        name: '{{ item }}'
+        state: present
+      with_items: '{{ packages }}'
